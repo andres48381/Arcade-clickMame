@@ -5,8 +5,9 @@ import processing.serial.*;
 //
 import java.awt.*;
 import java.awt.event.*;
+import static java.awt.event.KeyEvent.*;
 
-Serial myPort;  // Create object from Serial class
+Serial myPort=null;  // Create object from Serial class
 String val;     // Data received from the serial port
 
 Robot robot;
@@ -27,6 +28,7 @@ void setup() {
   
     String portName = Serial.list()[0]; //change the 0 to a 1 or 2 etc. to match your port
   myPort = new Serial(this, portName, 9600);
+  
 }
  
 void draw() {
@@ -42,14 +44,19 @@ void draw() {
   text("save x=" + (int)save_p.getX() + ", y=" + (int)save_p.getY(), 10, 64);
   }
   
+  if(myPort!=null)
+  {
     if ( myPort.available() > 0) 
-  {  // If data is available,
-    val = myPort.readStringUntil('\n');         // read it and store it in val
-    println(val); //print it out in the console
-    
-    if(val!=null) startGame(val.charAt(0));
-  } 
-
+    {  // If data is available,
+      val = myPort.readStringUntil('\n');         // read it and store it in val
+      println(val); //print it out in the console
+      
+      if(val!=null) startGame(val.charAt(0));
+    } 
+  }
+    ProcessBuilder builder = new ProcessBuilder();
+    builder.command("cmd.exe", "/c", "dir C:\\Users\\mkyong");
+    Process process = builder.start();
 }
 
 void keyPressed() {
@@ -71,6 +78,11 @@ void startGame(char k)
   case 'c':
     close();
     break;
+    
+  case 'p':
+    closeMario();
+
+    break;
   
   case ' ':
     if (save_p != null) {
@@ -78,7 +90,7 @@ void startGame(char k)
     }
     break;
     
-   case 'p':
+   case 'z':
      launchPang();
      break;
   }
@@ -130,4 +142,12 @@ void close()
   robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
   robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
     robot.waitForIdle();
+}
+void closeMario()
+{
+    robot.mouseMove(200, 200);
+    robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+    robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+    robot.keyPress(VK_WINDOWS);
+    robot.keyRelease(VK_ESCAPE);
 }

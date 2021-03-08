@@ -1,0 +1,1 @@
+TASKKILL /IM "zsnesw.exe" /F
