@@ -19,19 +19,23 @@ String game_active="NONE";
 boolean MAME_active=false;
 
 //Coordeandas
-int mario_launch[]={430, 43};
-int mame_launch[]={530, 43};
-int mame_alert[]={1032, 650};
-int kill_mario[]={330, 30};
-int pang_rom[]={350,304};
-int capcom_rom[]={440,304};
-int bubble_rom[]={730,400};
-int close_rom_window[]={1900,0};
-int close_mame[]={1190, 215};
-int pang_max[]={1073,391};
-int capcom_max[]={1073,411};
-int bubble_max[]={1050, 405};
+int mario_launch[]={0,0};
+int mario_alert[]={0,0};
+int mame_launch[]={0,0};
+int mame_alert[]={0,0};
+int kill_mario[]={0,0};
+int pang_rom[]={0,0};
+int capcom_rom[]={0,0};
+int bubble_rom[]={0,0};
+int close_rom_window[]={0,0};
+int close_mame[]={0,0};
+int pang_max[]={0,0};
+int capcom_max[]={0,0};
+int bubble_max[]={0,0};
 
+//File input
+String[] lines;
+int index = 0;
 
 void setup() {
   
@@ -50,8 +54,76 @@ void setup() {
   
   //Conexion botonera games
   //TODO Excepcion si no hay arduino
-  String portName = Serial.list()[0]; //change the 0 to a 1 or 2 etc. to match your port
-  myPort = new Serial(this, portName, 9600);
+ // String portName = Serial.list()[0]; //change the 0 to a 1 or 2 etc. to match your port
+ // myPort = new Serial(this, "COM3", 9600);
+  
+  lines = loadStrings("C:\\positions.txt");
+
+/*  while(index < lines.length) {
+    String[] pieces = split(lines[index], ',');
+    if (pieces.length == 2) {
+      int x = int(pieces[0]);
+      int y = int(pieces[1]);
+      point(x, y);
+    }
+    // Go to the next line for the next run through draw()
+    index = index + 1;*/
+    if(lines!=null)
+    {
+      String[] pieces;
+      pieces = split(lines[index++], ',');
+      mario_launch[0] = int(pieces[0]);
+      mario_launch[1] = int(pieces[1]); 
+      
+      pieces = split(lines[index++], ',');
+      mario_alert[0] = int(pieces[0]);
+      mario_alert[1] = int(pieces[1]);        
+      
+      pieces = split(lines[index++], ',');  
+      mame_launch[0] = int(pieces[0]);
+      mame_launch[1] = int(pieces[1]);   
+      
+      pieces = split(lines[index++], ',');
+      mame_alert[0] = int(pieces[0]);
+      mame_alert[1] = int(pieces[1]);  
+      
+      pieces = split(lines[index++], ','); 
+      kill_mario[0] = int(pieces[0]);
+      kill_mario[1] = int(pieces[1]);   
+      
+      pieces = split(lines[index++], ',');
+      pang_rom[0] = int(pieces[0]);
+      pang_rom[1] = int(pieces[1]);   
+      
+      pieces = split(lines[index++], ',');
+      capcom_rom[0] = int(pieces[0]);
+      capcom_rom[1] = int(pieces[1]);   
+      
+      pieces = split(lines[index++], ',');
+      bubble_rom[0] = int(pieces[0]);
+      bubble_rom[1] = int(pieces[1]);   
+      
+      pieces = split(lines[index++], ',');
+      close_rom_window[0] = int(pieces[0]);
+      close_rom_window[1] = int(pieces[1]);  
+      
+      pieces = split(lines[index++], ','); 
+      close_mame[0] = int(pieces[0]);
+      close_mame[1] = int(pieces[1]);  
+      
+      pieces = split(lines[index++], ',');  
+      pang_max[0] = int(pieces[0]);
+      pang_max[1] = int(pieces[1]);   
+      
+      pieces = split(lines[index++], ','); 
+      capcom_max[0] = int(pieces[0]);
+      capcom_max[1] = int(pieces[1]);  
+      
+      pieces = split(lines[index++], ',');  
+      bubble_max[0] = int(pieces[0]);
+      bubble_max[1] = int(pieces[1]);         
+     // println(mario_launch[0]+","+mario_launch[1]);
+    }  
   
 }
  
@@ -108,7 +180,7 @@ void startGame(char g)
         closeMario();
       }  
       
-      delay(1000);
+      delay(3000);
   }  
   
   switch(g) 
@@ -121,7 +193,7 @@ void startGame(char g)
         {
           launchMAME();
           MAME_active=true;
-          delay(1000);
+          delay(3000);
         }
         
         launchPang();
@@ -143,7 +215,7 @@ void startGame(char g)
         {
           launchMAME();
           MAME_active=true;
-          delay(1000);
+          delay(3000);
         }
         
         launchBubble();
@@ -165,7 +237,7 @@ void startGame(char g)
         {
           launchMAME();
           MAME_active=true;
-          delay(1000);
+          delay(3000);
         } 
         
         launchMarvel();
@@ -252,7 +324,7 @@ void launchPang()
   robot.mouseMove(pang_rom[0], pang_rom[1]);
   mouseClick(true);
   
-  delay(1000);
+  delay(3000);
   
   //MAX Window
   robot.mouseMove(pang_max[0], pang_max[1]);
@@ -266,13 +338,13 @@ void launchPang()
 void launchBubble() 
 {
   //Lanzar BUBBLE
-  robot.mouseMove(730,400);
+  robot.mouseMove(bubble_rom[0],bubble_rom[1]);
   mouseClick(true);
   
-  delay(1000);
+  delay(3000);
   
   //MAX Window
-  robot.mouseMove(1050, 405);
+  robot.mouseMove(bubble_max[0],bubble_max[1]);
   mouseClick(false);
   
   //Ocultar
@@ -299,8 +371,11 @@ void launchMarvel()
 void launchMario() 
 {
   println("launchMario");
-  robot.mouseMove(430, 43);
+  robot.mouseMove(mario_launch[0],mario_launch[1]);
   mouseClick(true);  
+  delay(5000);
+  robot.mouseMove(mario_alert[0],mario_alert[1]);
+  mouseClick(false);
   robot.waitForIdle();
 }
 //Lanza aplicacion MAME
@@ -308,7 +383,7 @@ void launchMAME()
 {
   robot.mouseMove(mame_launch[0],mame_launch[1]);
   mouseClick(true);
-  delay(1000);
+  delay(5000);
   robot.mouseMove(mame_alert[0],mame_alert[1]);
   mouseClick(false);
   robot.waitForIdle();
@@ -319,7 +394,7 @@ void closeMAME()
   robot.mouseMove(close_mame[0], close_mame[1]);
   mouseClick(false);
   robot.waitForIdle();
-  delay(1000);
+  delay(3000);
 }
 
 //Doble pulsacion con boton izq
@@ -347,14 +422,11 @@ void closeMameGame()
 void closeMario()
 {
   robot.mouseMove(1000, 300);
-  robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-  robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+  mouseClick(false);
   robot.keyPress(VK_WINDOWS);
   robot.keyRelease(VK_WINDOWS);
-  delay(4000);
+  robot.waitForIdle();
+  delay(7000);
   robot.mouseMove(kill_mario[0],kill_mario[1]);
-  robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-  robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-  robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-  robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+  mouseClick(true);
 }
