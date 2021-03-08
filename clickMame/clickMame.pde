@@ -18,6 +18,21 @@ Point save_p;
 String game_active="NONE";
 boolean MAME_active=false;
 
+//Coordeandas
+int mario_launch[]={430, 43};
+int mame_launch[]={530, 43};
+int mame_alert[]={1032, 650};
+int kill_mario[]={330, 30};
+int pang_rom[]={350,304};
+int capcom_rom[]={440,304};
+int bubble_rom[]={730,400};
+int close_rom_window[]={1900,0};
+int close_mame[]={1190, 215};
+int pang_max[]={1073,391};
+int capcom_max[]={1073,411};
+int bubble_max[]={1050, 405};
+
+
 void setup() {
   
   size(320, 240);
@@ -234,13 +249,13 @@ void launchPang()
 //ghost 874,305
   
   //Lanzar PANG
-  robot.mouseMove(350, 304);
+  robot.mouseMove(pang_rom[0], pang_rom[1]);
   mouseClick(true);
   
   delay(1000);
   
   //MAX Window
-  robot.mouseMove(1073, 391);
+  robot.mouseMove(pang_max[0], pang_max[1]);
   mouseClick(false);
   
   //Ocultar
@@ -268,13 +283,13 @@ void launchBubble()
 void launchMarvel() 
 {
   //Lanzar MARVEL
-  robot.mouseMove(1080, 280);
+  robot.mouseMove(capcom_rom[0], capcom_rom[1]);
   mouseClick(true);
   
-  delay(1000);
+  delay(3000);
   
   //MAX Window
-  robot.mouseMove(1073, 391);
+  robot.mouseMove(capcom_max[0], capcom_max[1]);
   mouseClick(false);
   
   //Ocultar
@@ -291,17 +306,17 @@ void launchMario()
 //Lanza aplicacion MAME
 void launchMAME()
 {
-  robot.mouseMove(530, 43);
+  robot.mouseMove(mame_launch[0],mame_launch[1]);
   mouseClick(true);
   delay(1000);
-  robot.mouseMove(1032, 650);
+  robot.mouseMove(mame_alert[0],mame_alert[1]);
   mouseClick(false);
   robot.waitForIdle();
 }
 
 void closeMAME()
 {
-  robot.mouseMove(1190, 215);
+  robot.mouseMove(close_mame[0], close_mame[1]);
   mouseClick(false);
   robot.waitForIdle();
   delay(1000);
@@ -337,7 +352,7 @@ void closeMario()
   robot.keyPress(VK_WINDOWS);
   robot.keyRelease(VK_WINDOWS);
   delay(4000);
-  robot.mouseMove(330, 30);
+  robot.mouseMove(kill_mario[0],kill_mario[1]);
   robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
   robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
   robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
