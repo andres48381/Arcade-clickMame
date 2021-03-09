@@ -9,6 +9,7 @@ import static java.awt.event.KeyEvent.*;
 Serial myPort=null;  // Create object from Serial class
 String val;     // Data received from the serial port
 
+
 //Control de cursor
 Robot robot;
 PFont pfont;
@@ -124,7 +125,12 @@ void setup() {
       bubble_max[1] = int(pieces[1]);         
      // println(mario_launch[0]+","+mario_launch[1]);
     }  
-  
+    
+    //Send start buttons
+  if(myPort!=null)
+  {   
+    myPort.write("A"); //Envia una "A" para que el Arduino encienda el led
+  }  
 }
  
 void draw() {
@@ -140,7 +146,7 @@ void draw() {
   if (save_p != null) {
   text("save x=" + (int)save_p.getX() + ", y=" + (int)save_p.getY(), 10, 64);
   }
-  
+
   //Comunicacion botonera games
   if(myPort!=null)
   {
