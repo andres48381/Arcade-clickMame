@@ -189,6 +189,12 @@ void startGame(char g)
       delay(3000);
   }  
   
+      //Send start buttons
+  if(myPort!=null)
+  {   
+    myPort.write(g); //Envia codigo juego
+  }  
+  
   switch(g) 
   {
     //PANG
