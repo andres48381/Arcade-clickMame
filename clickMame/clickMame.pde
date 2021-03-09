@@ -54,8 +54,8 @@ void setup() {
   
   //Conexion botonera games
   //TODO Excepcion si no hay arduino
- // String portName = Serial.list()[0]; //change the 0 to a 1 or 2 etc. to match your port
- // myPort = new Serial(this, "COM3", 9600);
+  String portName = Serial.list()[0]; //change the 0 to a 1 or 2 etc. to match your port
+  myPort = new Serial(this, portName, 9600);
   
   lines = loadStrings("C:\\positions.txt");
 
@@ -193,7 +193,7 @@ void startGame(char g)
         {
           launchMAME();
           MAME_active=true;
-          delay(3000);
+          delay(6000);
         }
         
         launchPang();
@@ -324,7 +324,7 @@ void launchPang()
   robot.mouseMove(pang_rom[0], pang_rom[1]);
   mouseClick(true);
   
-  delay(3000);
+  delay(6000);
   
   //MAX Window
   robot.mouseMove(pang_max[0], pang_max[1]);
@@ -341,7 +341,7 @@ void launchBubble()
   robot.mouseMove(bubble_rom[0],bubble_rom[1]);
   mouseClick(true);
   
-  delay(3000);
+  delay(8000);
   
   //MAX Window
   robot.mouseMove(bubble_max[0],bubble_max[1]);
@@ -358,7 +358,7 @@ void launchMarvel()
   robot.mouseMove(capcom_rom[0], capcom_rom[1]);
   mouseClick(true);
   
-  delay(3000);
+  delay(10000);
   
   //MAX Window
   robot.mouseMove(capcom_max[0], capcom_max[1]);
