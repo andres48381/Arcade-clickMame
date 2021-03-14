@@ -34,9 +34,14 @@ int pang_max[]={0,0};
 int capcom_max[]={0,0};
 int bubble_max[]={0,0};
 
-//File input
+//File input coordenates
 String[] lines;
 int index = 0;
+
+//File input battery
+String[] lines_battery;
+String battery_state;
+int battery_level;
 
 void setup() {
   
@@ -59,6 +64,8 @@ void setup() {
   myPort = new Serial(this, portName, 9600);
   
   lines = loadStrings("C:\\positions.txt");
+  
+  lines_battery = loadStrings("D:\\battery.txt");
 
 /*  while(index < lines.length) {
     String[] pieces = split(lines[index], ',');
@@ -126,6 +133,18 @@ void setup() {
      // println(mario_launch[0]+","+mario_launch[1]);
     }  
     
+    //Battery
+    if(lines_battery!=null)
+    {
+      String[] battery_info;
+      battery_info = split(lines[index++], ',');
+      battery_state = (battery_info[0]);
+      battery_level = int(battery_info[1]); 
+      
+      println(battery_state"+ ", " + battery_level);
+    }
+    
+    
     //Send start buttons
   if(myPort!=null)
   {   
@@ -140,13 +159,13 @@ void draw() {
   fill(#000000);
   
   //Get coordenates cursor
-  Point p = getGlobalMouseLocation();  
+ /* Point p = getGlobalMouseLocation();  
   textFont(pfont);
   text("now x=" + (int)p.getX() + ", y=" + (int)p.getY(), 10, 32);  
   if (save_p != null) {
   text("save x=" + (int)save_p.getX() + ", y=" + (int)save_p.getY(), 10, 64);
   }
-
+*/
   //Comunicacion botonera games
   if(myPort!=null)
   {
@@ -171,11 +190,16 @@ void keyPressed() {
 }
 
 void startGame(char g)
-{
+{  
+  //Send start buttons
+  if(myPort!=null)
+  {   
+    myPort.write(g); //Envia codigo juego pulsado
+  }  
   
   //Check game started
   if(!game_active.equals("NONE"))
-  {
+  {       
       if(!game_active.equals("MARIO"))
       {
         closeMameGame();
@@ -188,12 +212,7 @@ void startGame(char g)
       
       delay(3000);
   }  
-  
-      //Send start buttons
-  if(myPort!=null)
-  {   
-    myPort.write(g); //Envia codigo juego
-  }  
+
   
   switch(g) 
   {
@@ -285,23 +304,12 @@ void startGame(char g)
      case 'x':
       launchMAME();
       break;     
-                
-    /*
-    case 's':
-      save_p = getGlobalMouseLocation();
-      break;
-    case 'm':
-      if (save_p != null) {
-        mouseMove((int)save_p.getX(), (int)save_p.getY());
-      }
-      break;
-    
-    case ' ':
-      if (save_p != null) {
-        mouseMoveAndClick((int)save_p.getX(), (int)save_p.getY());
-      }
-      break;
-        */
+               
+  }  
+   //Check game started
+  if(myPort!=null)
+  {
+     myPort.write(game_active); //Envia codigo juego iniciado 
   }
 }
 
