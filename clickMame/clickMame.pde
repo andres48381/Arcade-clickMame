@@ -42,6 +42,7 @@ int index = 0;
 String[] lines_battery;
 String battery_state;
 int battery_level;
+int cont_battery=0;
 
 void setup() {
   
@@ -184,18 +185,24 @@ void draw() {
   }
   
     //Battery
-    lines_battery = loadStrings("D:\\battery.txt");
-    if(lines_battery!=null)
+    if(cont_battery>300)
     {
-      String[] battery_info;
-      battery_info = split(lines_battery[0], ',');
-      battery_state = (battery_info[0]);
-      battery_level = int(battery_info[1]); 
-      
-      println(battery_state + ", " + battery_level);
+      lines_battery = loadStrings("D:\\battery.txt");
+      if(lines_battery!=null)
+      {
+        String[] battery_info;
+        battery_info = split(lines_battery[0], ',');
+        battery_state = (battery_info[0]);
+        battery_level = int(battery_info[1]); 
+        
+        println(battery_state + ", " + battery_level);
+        
+        cont_battery=0;
+      }
     }
     
-    delay(15000);
+    cont_battery+=1;
+    delay(50);
 }
 
 void keyPressed() {
