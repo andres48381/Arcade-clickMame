@@ -202,7 +202,7 @@ void draw() {
     }
     
     cont_battery+=1;
-    delay(50);
+    delay(25);
 }
 
 void keyPressed() {
