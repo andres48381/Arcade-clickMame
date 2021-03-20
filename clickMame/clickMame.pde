@@ -8,7 +8,7 @@ import static java.awt.event.KeyEvent.*;
 //Comunicacion botonera games
 Serial myPort=null;  // Create object from Serial class
 String val;     // Data received from the serial port
-
+String message="";
 
 //Control de cursor
 Robot robot;
@@ -47,11 +47,12 @@ int cont_battery=0;
 void setup() {
   
   size(320, 240);
-  
+
   
   try { 
     robot = new Robot();
     robot.setAutoDelay(0);
+
   } 
   catch (Exception e) {
     e.printStackTrace();
@@ -149,8 +150,11 @@ void setup() {
     //Send start buttons
   if(myPort!=null)
   {   
-    myPort.write("A"); //Envia una "A" para que el Arduino encienda el led
+    myPort.write("A/1"); //Envia una "A/1" para que el Arduino encienda el led
   }  
+  
+
+  //launch("D:/Desarrollos/SoundVolumeView.exe /SetVolume Altavoces 99");
 }
  
 void draw() {
@@ -158,6 +162,7 @@ void draw() {
   //Window
   background(#ffffff);
   fill(#000000);
+  
   
   //Get coordenates cursor
  /* Point p = getGlobalMouseLocation();  
@@ -193,14 +198,16 @@ void draw() {
         String[] battery_info;
         battery_info = split(lines_battery[0], ',');
         battery_state = (battery_info[0]);
-        battery_level = 4;//int(battery_info[1])/10; 
+        battery_level = int(battery_info[1])/10; 
         
         println(battery_state + ", " + battery_level);
         //Send start buttons
         if(myPort!=null)
         {   
-         // myPort.write('b'); //Envia codigo juego pulsado 
-          myPort.write(battery_level); //Envia codigo juego pulsado
+          message="b/"+str(battery_level);
+          myPort.write(message); //Envia codigo juego pulsado 
+          println(message);
+         // myPort.write(battery_level); //Envia codigo juego pulsado
         }  
         cont_battery=0;
       }
@@ -220,7 +227,9 @@ void startGame(char g)
   //Send start buttons
   if(myPort!=null)
   {   
-    myPort.write(g); //Envia codigo juego pulsado
+    message=g+"/1";
+    myPort.write(message); //Envia codigo juego pulsado
+    println(message);
   }  
   
   //Check game started
@@ -335,7 +344,8 @@ void startGame(char g)
    //Check game started
   if(myPort!=null)
   {
-     myPort.write(game_active); //Envia codigo juego iniciado 
+    message=game_active+"/1";
+    myPort.write(message); //Envia codigo juego iniciado 
   }
 }
 
