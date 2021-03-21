@@ -62,8 +62,11 @@ void setup() {
   
   //Conexion botonera games
   //TODO Excepcion si no hay arduino
-  String portName = Serial.list()[0]; //change the 0 to a 1 or 2 etc. to match your port
-  myPort = new Serial(this, portName, 9600);
+  if(Serial.list()!=null)
+  {
+    String portName = Serial.list()[0]; //change the 0 to a 1 or 2 etc. to match your port
+    myPort = new Serial(this, portName, 9600);
+  }
   
   lines = loadStrings("C:\\positions.txt");
   
@@ -150,7 +153,9 @@ void setup() {
     //Send start buttons
   if(myPort!=null)
   {   
-    myPort.write("A/1"); //Envia una "A/1" para que el Arduino encienda el led
+    message="A/1";
+    myPort.write(message); //Envia una "A/1" para que el Arduino encienda el led
+    println(message);
   }  
   
 
@@ -346,6 +351,7 @@ void startGame(char g)
   {
     message=game_active+"/1";
     myPort.write(message); //Envia codigo juego iniciado 
+    println(message);
   }
 }
 
