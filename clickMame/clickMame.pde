@@ -62,7 +62,7 @@ void setup() {
   
   //Conexion botonera games
   //TODO Excepcion si no hay arduino
-  if(Serial.list()!=null)
+  if(Serial.list().length>0)
   {
     String portName = Serial.list()[0]; //change the 0 to a 1 or 2 etc. to match your port
     myPort = new Serial(this, portName, 9600);
