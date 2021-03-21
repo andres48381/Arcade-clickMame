@@ -197,14 +197,14 @@ void draw() {
       {
         String[] battery_info;
         battery_info = split(lines_battery[0], ',');
-        battery_state = (battery_info[0]);
+        battery_state = (battery_info[0]).equals("Charging")?"1":"0";
         battery_level = int(battery_info[1])/10; 
         
         println(battery_state + ", " + battery_level);
         //Send start buttons
         if(myPort!=null)
         {   
-          message="b/"+str(battery_level);
+          message="b/"+str(battery_level)+"/"+battery_state;
           myPort.write(message); //Envia codigo juego pulsado 
           println(message);
          // myPort.write(battery_level); //Envia codigo juego pulsado
