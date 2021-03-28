@@ -46,6 +46,28 @@ String battery_state;
 int battery_level;
 int cont_battery=0;
 
+//Sound
+int sound_level=30;
+
+void adjust_sound(boolean inc)
+{
+  if(inc && (sound_level<100))
+  {
+    sound_level+=10;
+    println("increase sound");
+  }
+  else if(!inc && (sound_level>0))
+  {
+    sound_level-=10;
+    println("decrease sound");
+  }
+  
+  if(sound_level<0) sound_level=0;
+  else if(sound_level>100) sound_level=100;
+  
+  launch("D:/Desarrollos/SoundVolumeView.exe /SetVolume Altavoces "+str(sound_level));  
+}
+  
 void setup() {
   
   size(320, 240);
@@ -146,7 +168,7 @@ void setup() {
       String[] battery_info;
       battery_info = split(lines_battery[0], ',');
       battery_state = (battery_info[0]);
-      battery_level = int(battery_info[1]); 
+      battery_level = int(battery_info[1])/10; 
       
       println(battery_state + ", " + battery_level);
     }
@@ -235,6 +257,9 @@ void draw() {
 void keyPressed() {
 
   startGame(key);
+  
+  if(key=='i') adjust_sound(true);
+  else if(key=='o') adjust_sound(false);
 }
 
 void startGame(char g)
