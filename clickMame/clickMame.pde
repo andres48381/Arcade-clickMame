@@ -5,6 +5,8 @@ import java.awt.*;
 import java.awt.event.*;
 import static java.awt.event.KeyEvent.*;
 
+String version= "0.1.0";
+
 //Comunicacion botonera games
 Serial myPort=null;  // Create object from Serial class
 String val;     // Data received from the serial port
@@ -68,9 +70,9 @@ void setup() {
     myPort = new Serial(this, portName, 9600);
   }
   
-  lines = loadStrings("C:\\positions.txt");
+  lines = loadStrings("C:\\RetroGameMarcos\\positions.txt");
   
-  lines_battery = loadStrings("D:\\battery.txt");
+  lines_battery = loadStrings("C:\\RetroGameMarcos\\battery.txt");
 
 /*  while(index < lines.length) {
     String[] pieces = split(lines[index], ',');
@@ -158,7 +160,15 @@ void setup() {
     println(message);
   }  
   
-
+  //Lanza bucle de gestion de bateria
+  Runtime r = Runtime.getRuntime();
+  Process p1;
+  try {
+    p1 = r.exec("cmd /c start C:/RetroGameMarcos/getBattery"); //Lanza acceso directo con ejecucion minimizada
+  }
+  catch(Exception c) {
+  }
+  //launch("C:/RetroGameMarcos/battery.bat");
   //launch("D:/Desarrollos/SoundVolumeView.exe /SetVolume Altavoces 99");
 }
  
@@ -197,7 +207,7 @@ void draw() {
     //Battery
     if(cont_battery>300)
     {
-      lines_battery = loadStrings("D:\\battery.txt");
+      lines_battery = loadStrings("C:\\RetroGameMarcos\\battery.txt");
       if(lines_battery!=null)
       {
         String[] battery_info;
