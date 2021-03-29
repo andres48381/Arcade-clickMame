@@ -130,6 +130,7 @@ void ctrlGames(char g)
 //Lanza rom PANG
 void launchPang() 
 {
+  stopAmbientMusic();
   //pang 714,218
 //pang max 1073,391
 //ghost 874,305
@@ -151,6 +152,7 @@ void launchPang()
 //Lanza rom Bubble
 void launchBubble() 
 {
+  stopAmbientMusic();
   //Lanzar BUBBLE
   robot.mouseMove(bubble_rom[0],bubble_rom[1]);
   mouseClick(true);
@@ -168,6 +170,7 @@ void launchBubble()
 //Lanza rom Marvel
 void launchMarvel() 
 {
+  stopAmbientMusic();
   //Lanzar MARVEL
   robot.mouseMove(capcom_rom[0], capcom_rom[1]);
   mouseClick(true);
@@ -184,6 +187,7 @@ void launchMarvel()
 //Lanza rom Mario
 void launchMario() 
 {
+  stopAmbientMusic();
   println("launchMario");
   robot.mouseMove(mario_launch[0],mario_launch[1]);
   println(mario_launch[0]+","+mario_launch[1]);

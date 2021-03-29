@@ -31,7 +31,13 @@ void initMusic()
   fileB = new SoundFile(this, sounds_path+"B.mp3");
   fileI = new SoundFile(this, sounds_path+"I.mp3");
   
+  fileStart = new SoundFile(this, sounds_path+"start.wav");
+  
   launch(volume_path+" /SetVolume Altavoces "+str(sound_level));  
+}
+void playStart()
+{
+  fileStart.play();
 }
 void playAmbientMusic()
 {
