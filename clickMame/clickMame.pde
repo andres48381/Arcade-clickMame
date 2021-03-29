@@ -4,6 +4,8 @@ void setup() {
   //Frame size
   size(320, 240);
 
+  //Sound files initialized
+  initMusic();
   
   //Robot para pulsaciones fantasma
   try { 
@@ -36,10 +38,7 @@ void setup() {
   }  
   
   //Lanza bucle de gestion de bateria
-  launchBattScript();
-
-  
-
+  //launchBattScript();
 }
  
 void draw() {
@@ -49,7 +48,7 @@ void draw() {
   fill(#000000);
   
   //Show cursos coordenates
-  //printCoordenates();
+  printCoordenates();
 
   //Comunicacion botonera games
   if(myPort!=null)
@@ -67,15 +66,18 @@ void draw() {
            //Check comando de sonido
           if(!adjust_sound(code))
           {
-            //Lanza juego recibido
-              startGame(code);
+            //Controla estado de iniciar/parar juegos
+            ctrlGames(code);
           }
         } 
       }
   }
    
    //Get battery state/load and update display
-  checkBattery();
+  //checkBattery();
+  
+  //Ambient play music control.
+  playAmbientMusic();
   
   delay(25);
 }
@@ -86,6 +88,6 @@ void keyPressed()
   if(!adjust_sound(key))
   {
     //Lanza juego recibido
-    startGame(key);
+    ctrlGames(key);
   }   
 }

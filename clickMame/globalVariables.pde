@@ -6,7 +6,7 @@ import java.awt.event.*;
 import static java.awt.event.KeyEvent.*;
   
 import processing.sound.*;
-SoundFile file;
+
 String version= "0.1.0";
 
 //Comunicacion botonera games
@@ -49,10 +49,13 @@ int battery_level;
 int cont_battery=0;
 
 //Sound
-int sound_level=30;
+int sound_level=8;
+SoundFile s; //Puntero de control
+SoundFile fileA,fileB,fileI;
 
 //Paths
 String coord_file="C:\\RetroGameMarcos\\positions.txt";
 String batt_file = "C:\\RetroGameMarcos\\battery.txt";
 String batt_script = "C:/RetroGameMarcos/getBattery";
 String sounds_path = "C:/RetroGameMarcos/sounds/";
+String volume_path = "D:/Desarrollos/SoundVolumeView.exe";

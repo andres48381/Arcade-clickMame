@@ -1,5 +1,5 @@
 
-void startGame(char g)
+void ctrlGames(char g)
 {  
   //Send start buttons
   if(myPort!=null)
@@ -186,6 +186,7 @@ void launchMario()
 {
   println("launchMario");
   robot.mouseMove(mario_launch[0],mario_launch[1]);
+  println(mario_launch[0]+","+mario_launch[1]);
   mouseClick(true);  
   delay(5000);
   robot.mouseMove(mario_alert[0],mario_alert[1]);
