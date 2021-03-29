@@ -49,23 +49,30 @@ int cont_battery=0;
 //Sound
 int sound_level=30;
 
-void adjust_sound(boolean inc)
+boolean adjust_sound(char command)
 {
-  if(inc && (sound_level<100))
+  if(command=='i')
   {
     sound_level+=10;
+    launch("D:/Desarrollos/SoundVolumeView.exe /Unmute Altavoces ");  
     println("increase sound");
   }
-  else if(!inc && (sound_level>0))
+  else if(command=='o')
   {
     sound_level-=10;
     println("decrease sound");
+  }
+  else
+  {
+    return false;
   }
   
   if(sound_level<0) sound_level=0;
   else if(sound_level>100) sound_level=100;
   
   launch("D:/Desarrollos/SoundVolumeView.exe /SetVolume Altavoces "+str(sound_level));  
+  
+  return true;
 }
   
 void setup() {
@@ -216,12 +223,19 @@ void draw() {
       {  
         // If data is available,
         val = myPort.readStringUntil('\n');         // read it and store it in val
-        println(val); //print it out in the console
-        
-        //Lanza juego recibido
+              
         if(val!=null)
         {
-          startGame(val.charAt(0));
+          println(val); //print it out in the console
+          char code=val.charAt(0);
+                  
+           //Check comando de sonido
+          if(!adjust_sound(code))
+          {
+            //Lanza juego recibido
+              startGame(code);
+          }          
+
         } 
       }
   }
@@ -256,10 +270,12 @@ void draw() {
 
 void keyPressed() {
 
-  startGame(key);
-  
-  if(key=='i') adjust_sound(true);
-  else if(key=='o') adjust_sound(false);
+     //Check comando de sonido
+    if(!adjust_sound(key))
+    {
+      //Lanza juego recibido
+        startGame(key);
+    }   
 }
 
 void startGame(char g)
