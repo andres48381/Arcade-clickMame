@@ -234,8 +234,7 @@ void draw() {
           {
             //Lanza juego recibido
               startGame(code);
-          }          
-
+          }
         } 
       }
   }
