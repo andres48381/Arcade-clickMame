@@ -66,5 +66,6 @@ void playAmbientMusic()
 void stopAmbientMusic()
 {
   s.stop();
+  playing_ambient=false;
   println("***STOP MUSIC AMBIENT***");    
 }

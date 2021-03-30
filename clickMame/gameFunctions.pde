@@ -1,12 +1,14 @@
 
 void ctrlGames(char g)
 {  
+  
+   playStart();
+      
   //Send start buttons
   if(myPort!=null)
   {   
     message=g+"/1";
     myPort.write(message); //Envia codigo juego pulsado
-    playStart();
     println(message);
   }  
   
