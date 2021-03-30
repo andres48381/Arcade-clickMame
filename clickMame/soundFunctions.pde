@@ -27,9 +27,9 @@ boolean adjust_sound(char command)
 }
 void initMusic()
 {
-  fileA = new SoundFile(this, sounds_path+"A.mp3");
-  fileB = new SoundFile(this, sounds_path+"B.mp3");
-  fileI = new SoundFile(this, sounds_path+"I.mp3");
+  fileA = new SoundFile(this, sounds_path+"A.wav");
+  fileB = new SoundFile(this, sounds_path+"B.wav");
+  fileI = new SoundFile(this, sounds_path+"I.wav");
   
   fileStart = new SoundFile(this, sounds_path+"start.wav");
   
@@ -41,11 +41,21 @@ void playStart()
 }
 void playAmbientMusic()
 {
-  s=fileA;
   
-  if(!s.isPlaying() && game_active.equals("NONE"))
+  if(!playing_ambient && game_active.equals("NONE"))
   {
+    int num_sound=int(random(3));
+    
+    switch(num_sound)
+    {
+      case 0:  s=fileA; break;
+      case 1: s=fileB; break;
+      case 2: s=fileI; break;
+      default:  s=fileA; break;  
+    }    
+    
     s.play();
+    playing_ambient=true;
     println("***PLAYING MUSIC AMBIENT***");
   }
   else if(!game_active.equals("NONE") && s.isPlaying())

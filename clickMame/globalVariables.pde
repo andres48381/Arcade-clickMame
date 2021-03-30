@@ -52,6 +52,7 @@ int cont_battery=0;
 int sound_level=8;
 SoundFile s; //Puntero de control
 SoundFile fileA,fileB,fileI,fileStart;
+boolean playing_ambient=false;
 
 //Paths
 String coord_file="C:\\RetroGameMarcos\\positions.txt";
