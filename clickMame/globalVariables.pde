@@ -58,4 +58,4 @@ String coord_file="C:\\RetroGameMarcos\\positions.txt";
 String batt_file = "C:\\RetroGameMarcos\\battery.txt";
 String batt_script = "C:/RetroGameMarcos/getBattery";
 String sounds_path = "C:/RetroGameMarcos/sounds/";
-String volume_path = "D:/Desarrollos/SoundVolumeView.exe";
+String volume_path = "C:/RetroGameMarcos/SoundVolumeView.exe";

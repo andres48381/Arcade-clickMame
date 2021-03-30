@@ -38,7 +38,7 @@ void setup() {
   }  
   
   //Lanza bucle de gestion de bateria
-  //launchBattScript();
+  launchBattScript();
 }
  
 void draw() {
@@ -74,7 +74,7 @@ void draw() {
   }
    
    //Get battery state/load and update display
-  //checkBattery();
+  checkBattery();
   
   //Ambient play music control.
   playAmbientMusic();
