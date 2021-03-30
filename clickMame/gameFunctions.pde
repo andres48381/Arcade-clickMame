@@ -6,6 +6,7 @@ void ctrlGames(char g)
   {   
     message=g+"/1";
     myPort.write(message); //Envia codigo juego pulsado
+    playStart();
     println(message);
   }  
   
