@@ -39,6 +39,8 @@ void setup() {
   
   //Lanza bucle de gestion de bateria
   launchBattScript();
+  
+  delay(3000);
 }
  
 void draw() {

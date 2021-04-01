@@ -7,7 +7,7 @@ import static java.awt.event.KeyEvent.*;
   
 import processing.sound.*;
 
-String version= "0.2.0";
+String version= "0.2.1";
 
 //Comunicacion botonera games
 Serial myPort=null;  // Create object from Serial class
