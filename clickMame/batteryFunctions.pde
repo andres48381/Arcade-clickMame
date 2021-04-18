@@ -29,7 +29,7 @@
         //Send start buttons
         if(myPort!=null)
         {   
-          message="b/"+str(battery_level)+"/"+battery_state;
+          message="B/"+str(battery_level)+"/"+battery_state;
           myPort.write(message); //Envia codigo juego pulsado 
           println(message);
          // myPort.write(battery_level); //Envia codigo juego pulsado
