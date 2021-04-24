@@ -42,21 +42,31 @@ void playStart()
 void playAmbientMusic()
 {
   
-  if(!playing_ambient && game_active.equals("NONE"))
+  if(game_active.equals("NONE"))
   {
-    int num_sound=int(random(3));
-    
-    switch(num_sound)
+    //Set Sound File
+    if(!playing_ambient)
     {
-      case 0:  s=fileA; break;
-      case 1: s=fileB; break;
-      case 2: s=fileI; break;
-      default:  s=fileA; break;  
-    }    
-    
-    s.play();
-    playing_ambient=true;
-    println("***PLAYING MUSIC AMBIENT***");
+      int num_sound=int(random(3));
+      
+      switch(num_sound)
+      {
+        case 0:  s=fileA; break;
+        case 1: s=fileB; break;
+        case 2: s=fileI; break;
+        default:  s=fileA; break;  
+      }    
+      
+      //s.play();
+      playing_ambient=true;
+      println("***PLAYING MUSIC AMBIENT***");
+    }
+    else if(playing_ambient && !s.isPlaying())
+    {
+      //Play Sound File
+      s.play();
+      println("***PLAYING MUSIC AMBIENT***");
+    }  
   }
   else if(!game_active.equals("NONE") && s.isPlaying())
   {
