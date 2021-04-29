@@ -83,7 +83,7 @@ void ctrlGames(char g)
         {
           launchMAME();
           MAME_active=true;
-          delay(3000);
+          delay(9000);
         } 
         
         launchMarvel();
@@ -178,7 +178,7 @@ void launchMarvel()
   robot.mouseMove(capcom_rom[0], capcom_rom[1]);
   mouseClick(true);
   
-  delay(10000);
+  delay(28000);
   
   //MAX Window
   robot.mouseMove(capcom_max[0], capcom_max[1]);

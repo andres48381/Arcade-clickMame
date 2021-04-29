@@ -2,7 +2,9 @@
 void setup() {
   
   //Frame size
-  size(320, 240);
+  size(64, 64); 
+  stroke(255);
+  noFill();
 
   //Sound files initialized
   initMusic();
@@ -46,8 +48,8 @@ void setup() {
 void draw() {
   
   //Window
-  background(#ffffff);
-  fill(#000000);
+  //background(#ffffff);
+  //fill(#000000);
   
   //Show cursos coordenates
   //printCoordenates();
