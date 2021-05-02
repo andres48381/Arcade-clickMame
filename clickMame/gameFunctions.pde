@@ -15,14 +15,20 @@ void ctrlGames(char g)
   //Check game started
   if(!game_active.equals("NONE"))
   {       
-      if(!game_active.equals("MARIO"))
-      {
-        closeMameGame();
-      }
-      else
+      if(game_active.equals("MARIO"))
       {
         //Mario
         closeMario();
+      }
+      else if(game_active.equals("RAYMAN"))
+      {
+        //Rayman
+        closeRayman();
+      }
+      else
+      {
+        //mame
+        closeMameGame();
       }  
       
       delay(3000);
@@ -53,24 +59,21 @@ void ctrlGames(char g)
       }
       break;
       
-    //BUBBLE 2
-    case 'b':
-      if(!game_active.equals("BUBBLE"))
+    //RAYMAN
+    case 'r':
+      if(!game_active.equals("RAYMAN"))
       {
-        if(!MAME_active)
-        {
-          launchMAME();
-          MAME_active=true;
-          delay(3000);
-        }
-        
-        launchBubble();
-        game_active="BUBBLE";
+         if(MAME_active)
+         {
+           closeMAME();
+           MAME_active=false; 
+         }
+       
+        launchRayman();
+        game_active="RAYMAN";
       }
       else
       {
-        closeMAME();
-        MAME_active=false;     
         game_active="NONE";
       }
       break;
@@ -152,18 +155,18 @@ void launchPang()
   robot.mouseMove(0,0);  
   robot.waitForIdle();
 }
-//Lanza rom Bubble
-void launchBubble() 
+//Lanza Rayman
+void launchRayman() 
 {
   stopAmbientMusic();
   //Lanzar BUBBLE
-  robot.mouseMove(bubble_rom[0],bubble_rom[1]);
+  robot.mouseMove(rayman_launch[0],rayman_launch[1]);
   mouseClick(true);
   
-  delay(8000);
+  delay(5000);
   
   //MAX Window
-  robot.mouseMove(bubble_max[0],bubble_max[1]);
+  robot.mouseMove(rayman_max[0],rayman_max[1]);
   mouseClick(false);
   
   //Ocultar
@@ -229,6 +232,15 @@ void mouseClick(boolean doble)
     robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
     robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
   }
+}
+
+//Close max windows
+void closeRayman()
+{
+  robot.mouseMove(1900, 0);
+  robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+  robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+  robot.waitForIdle();
 }
 
 //Close max windows

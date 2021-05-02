@@ -2,7 +2,7 @@
 void setup() {
   
   //Frame size
-  size(64, 64); 
+  size(320, 120); 
   stroke(255);
   noFill();
 
@@ -48,11 +48,11 @@ void setup() {
 void draw() {
   
   //Window
-  //background(#ffffff);
-  //fill(#000000);
+  background(#ffffff);
+  fill(#000000);
   
   //Show cursos coordenates
-  //printCoordenates();
+  printCoordenates();
 
   //Comunicacion botonera games
   if(myPort!=null)

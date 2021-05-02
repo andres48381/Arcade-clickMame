@@ -7,7 +7,7 @@ import static java.awt.event.KeyEvent.*;
   
 import processing.sound.*;
 
-String version= "0.2.1";
+String version= "0.3.0";
 
 //Comunicacion botonera games
 Serial myPort=null;  // Create object from Serial class
@@ -31,12 +31,12 @@ int mame_alert[]={0,0};
 int kill_mario[]={0,0};
 int pang_rom[]={0,0};
 int capcom_rom[]={0,0};
-int bubble_rom[]={0,0};
+int rayman_launch[]={0,0};
 int close_rom_window[]={0,0};
 int close_mame[]={0,0};
 int pang_max[]={0,0};
 int capcom_max[]={0,0};
-int bubble_max[]={0,0};
+int rayman_max[]={0,0};
 
 //File input coordenates
 String[] lines;

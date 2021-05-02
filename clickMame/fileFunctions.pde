@@ -35,8 +35,8 @@ boolean readConfFile()
       capcom_rom[1] = int(pieces[1]);   
       
       pieces = split(lines[index++], ',');
-      bubble_rom[0] = int(pieces[0]);
-      bubble_rom[1] = int(pieces[1]);   
+      rayman_launch[0] = int(pieces[0]);
+      rayman_launch[1] = int(pieces[1]);   
       
       pieces = split(lines[index++], ',');
       close_rom_window[0] = int(pieces[0]);
@@ -55,8 +55,8 @@ boolean readConfFile()
       capcom_max[1] = int(pieces[1]);  
       
       pieces = split(lines[index++], ',');  
-      bubble_max[0] = int(pieces[0]);
-      bubble_max[1] = int(pieces[1]);         
+      rayman_max[0] = int(pieces[0]);
+      rayman_max[1] = int(pieces[1]);         
      // println(mario_launch[0]+","+mario_launch[1]);
      
      println("***CONF FILE READ***");
