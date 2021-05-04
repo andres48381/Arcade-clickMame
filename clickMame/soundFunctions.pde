@@ -4,12 +4,12 @@ boolean adjust_sound(char command)
   {
     sound_level+=10;
    // launch("D:/Desarrollos/SoundVolumeView.exe /Unmute Altavoces ");  
-    println("increase sound");
+    //println("increase sound");
   }
   else if(command=='o')
   {
     sound_level-=10;
-    println("decrease sound");
+    //println("decrease sound");
   }
   else
   {
@@ -24,7 +24,9 @@ boolean adjust_sound(char command)
   if(myPort!=null)
   {   
     message="S/"+str(sound_level);
-    myPort.write(message); 
+    
+    myPort.write('S'); 
+    myPort.write(sound_level); 
   }  
   
   launch(volume_path+" /SetVolume Altavoces "+str(sound_level));  

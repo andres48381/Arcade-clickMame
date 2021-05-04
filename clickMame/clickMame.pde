@@ -61,10 +61,9 @@ void draw() {
       {  
         // If data is available,
         val = myPort.readStringUntil('\n');         // read it and store it in val
-              
         if(val!=null)
         {
-          //println(val); //print it out in the console
+          println(val); //print it out in the console
           char code=val.charAt(0);
                   
            //Check comando de sonido

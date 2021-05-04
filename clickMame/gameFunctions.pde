@@ -8,7 +8,8 @@ void ctrlGames(char g)
   if(myPort!=null)
   {   
     message=g+"/1";
-    myPort.write(message); //Envia codigo juego pulsado
+    myPort.write('J'); //Envia codigo juego pulsado
+    myPort.write(g); //Envia codigo juego pulsado
     println(message);
   }  
   
