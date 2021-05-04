@@ -40,7 +40,7 @@ void setup() {
   }  
   
   //Lanza bucle de gestion de bateria
-  //launchBattScript();
+  launchBattScript();
   
   delay(3000);
 }
@@ -52,7 +52,7 @@ void draw() {
   fill(#000000);
   
   //Show cursos coordenates
-  printCoordenates();
+  //printCoordenates();
 
   //Comunicacion botonera games
   if(myPort!=null)
@@ -64,7 +64,7 @@ void draw() {
               
         if(val!=null)
         {
-          println(val); //print it out in the console
+          //println(val); //print it out in the console
           char code=val.charAt(0);
                   
            //Check comando de sonido
@@ -78,12 +78,12 @@ void draw() {
   }
    
    //Get battery state/load and update display
-  //checkBattery();
+  checkBattery();
   
   //Ambient play music control.
   playAmbientMusic();
   
-  delay(25);
+  delay(10);
 }
 
 void keyPressed() 

@@ -7,7 +7,7 @@ import static java.awt.event.KeyEvent.*;
   
 import processing.sound.*;
 
-String version= "0.3.0";
+String version= "0.3.1";
 
 //Comunicacion botonera games
 Serial myPort=null;  // Create object from Serial class
@@ -49,7 +49,7 @@ int battery_level;
 int cont_battery=0;
 
 //Sound
-int sound_level=8;
+int sound_level=10;
 SoundFile s; //Puntero de control
 SoundFile fileA,fileB,fileI,fileStart;
 boolean playing_ambient=false;

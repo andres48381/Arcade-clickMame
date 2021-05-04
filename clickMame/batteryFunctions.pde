@@ -15,15 +15,15 @@
  void checkBattery()
  {
      //Battery (each 15seg)
-    if(cont_battery>300)
+    if(cont_battery>1500)
     {
       lines_battery = loadStrings(batt_file);
       if(lines_battery!=null)
       {
         String[] battery_info;
         battery_info = split(lines_battery[0], ',');
-        battery_state = (battery_info[0]).equals("Charging")?"1":"0";
-        battery_level = int(battery_info[1])/10; 
+        battery_state = (battery_info[0]).equals("Charging")?"+":"-";
+        battery_level = int(battery_info[1]); 
         
         println(battery_state + ", " + battery_level);
         //Send start buttons
@@ -38,5 +38,5 @@
       }
     }
     
-    cont_battery+=1;
+    cont_battery++;
   }
