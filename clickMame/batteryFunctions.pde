@@ -22,7 +22,7 @@
       {
         String[] battery_info;
         battery_info = split(lines_battery[0], ',');
-        battery_state = (battery_info[0]).equals("Charging")?"+":"-";
+        battery_state = (battery_info[0]).equals("Charging")?'+':'-';
         battery_level = int(battery_info[1]); 
         
         println(battery_state + ", " + battery_level);
@@ -30,8 +30,9 @@
         if(myPort!=null)
         {   
           message="B/"+str(battery_level)+"/"+battery_state;
-          myPort.write('B'); //Envia codigo juego pulsado 
-          myPort.write(battery_level); //Envia codigo juego pulsado 
+          myPort.write('B');
+          myPort.write(battery_level); 
+          myPort.write(battery_state); 
           println(message);
          // myPort.write(battery_level); //Envia codigo juego pulsado
         }  

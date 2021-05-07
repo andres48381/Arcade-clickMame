@@ -44,7 +44,7 @@ int index = 0;
 
 //File input battery
 String[] lines_battery;
-String battery_state;
+char battery_state;
 int battery_level;
 int cont_battery=0;
 
