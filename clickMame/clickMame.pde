@@ -54,7 +54,9 @@ void draw() {
   fill(#000000);
   
   //Show cursos coordenates
-  printCoordenates();
+  if(show_coord){
+    printCoordenates();
+  }
 
   //Comunicacion botonera games
   if(myPort!=null)

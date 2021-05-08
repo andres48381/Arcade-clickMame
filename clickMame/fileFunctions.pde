@@ -8,6 +8,12 @@ boolean readConfFile()
       String[] pieces;
       
       pieces = split(lines[index++], ',');
+      show_coord = int(pieces[0])==1;
+      
+      pieces = split(lines[index++], ',');
+      play_sound = int(pieces[0])==1;
+      
+      pieces = split(lines[index++], ',');
       app_min[0] = int(pieces[0]);
       app_min[1] = int(pieces[1]); 
 

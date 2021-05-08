@@ -69,7 +69,7 @@ void playAmbientMusic()
       playing_ambient=true;
       println("***PLAYING MUSIC AMBIENT***");
     }
-    else if(playing_ambient && !s.isPlaying())
+    else if(playing_ambient && !s.isPlaying() && play_sound)
     {
       //Play Sound File
       s.play();

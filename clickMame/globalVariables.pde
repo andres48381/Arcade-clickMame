@@ -7,7 +7,7 @@ import static java.awt.event.KeyEvent.*;
   
 import processing.sound.*;
 
-String version= "0.3.1";
+String version= "0.4.0";
 
 //Comunicacion botonera games
 Serial myPort=null;  // Create object from Serial class
@@ -24,6 +24,8 @@ String game_active="NONE";
 boolean MAME_active=false;
 
 //Coordeandas
+boolean show_coord=false;
+boolean play_sound=true;
 int app_min[]={0,0};
 int mario_launch[]={0,0};
 int mario_alert[]={0,0};
