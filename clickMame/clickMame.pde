@@ -43,6 +43,8 @@ void setup() {
   launchBattScript();
   
   delay(3000);
+  robot.mouseMove(app_min[0],app_min[1]);
+  mouseClick(false);  
 }
  
 void draw() {
@@ -52,7 +54,7 @@ void draw() {
   fill(#000000);
   
   //Show cursos coordenates
-  //printCoordenates();
+  printCoordenates();
 
   //Comunicacion botonera games
   if(myPort!=null)

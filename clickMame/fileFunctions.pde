@@ -6,6 +6,11 @@ boolean readConfFile()
    if(lines!=null)
     {
       String[] pieces;
+      
+      pieces = split(lines[index++], ',');
+      app_min[0] = int(pieces[0]);
+      app_min[1] = int(pieces[1]); 
+
       pieces = split(lines[index++], ',');
       mario_launch[0] = int(pieces[0]);
       mario_launch[1] = int(pieces[1]); 
@@ -57,7 +62,6 @@ boolean readConfFile()
       pieces = split(lines[index++], ',');  
       rayman_max[0] = int(pieces[0]);
       rayman_max[1] = int(pieces[1]);         
-     // println(mario_launch[0]+","+mario_launch[1]);
      
      println("***CONF FILE READ***");
      

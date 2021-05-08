@@ -24,6 +24,7 @@ String game_active="NONE";
 boolean MAME_active=false;
 
 //Coordeandas
+int app_min[]={0,0};
 int mario_launch[]={0,0};
 int mario_alert[]={0,0};
 int mame_launch[]={0,0};
