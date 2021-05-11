@@ -86,7 +86,7 @@ void draw() {
   //Ambient play music control.
   playAmbientMusic();
   
-  delay(10);
+  delay(150);
 }
 
 void keyPressed() 

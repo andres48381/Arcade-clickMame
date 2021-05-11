@@ -15,7 +15,7 @@
  void checkBattery()
  {
      //Battery (each 15seg)
-    if(cont_battery>1500)
+    if(cont_battery>400)
     {
       lines_battery = loadStrings(batt_file);
       if(lines_battery!=null)
