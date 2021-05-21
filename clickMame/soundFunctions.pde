@@ -23,7 +23,7 @@ boolean adjust_sound(char command)
   
   if(myPort!=null)
   {   
-    message="S/"+str(sound_level);
+    //message="S/"+str(sound_level);
     
     myPort.write('S'); 
     myPort.write(sound_level); 

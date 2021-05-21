@@ -5,6 +5,7 @@ void setup() {
   size(320, 120); 
   stroke(255);
   noFill();
+  delay(10000);
 
   //Sound files initialized
   initMusic();
@@ -41,8 +42,18 @@ void setup() {
   
   //Lanza bucle de gestion de bateria
   launchBattScript();
+   //Get battery state/load and update display
+  checkBattery();
   
   delay(3000);
+  
+  //Sonido
+  if(myPort!=null)
+  {  
+    myPort.write('S'); 
+    myPort.write(sound_level); 
+  }
+    
   robot.mouseMove(app_min[0],app_min[1]);
   mouseClick(false);  
 }
