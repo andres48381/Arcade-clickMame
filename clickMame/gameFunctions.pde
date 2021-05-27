@@ -210,8 +210,10 @@ void launchMAME()
   robot.mouseMove(mame_launch[0],mame_launch[1]);
   mouseClick(true);
   delay(5000);
-  robot.mouseMove(mame_alert[0],mame_alert[1]);
-  mouseClick(false);
+  //robot.mouseMove(mame_alert[0],mame_alert[1]);
+  //mouseClick(false);
+  robot.keyPress(VK_ENTER);
+  robot.keyRelease(VK_ENTER);
   robot.waitForIdle();
 }
 
