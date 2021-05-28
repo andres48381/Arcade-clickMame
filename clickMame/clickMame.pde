@@ -5,7 +5,7 @@ void setup() {
   size(320, 120); 
   stroke(255);
   noFill();
-  delay(10000);
+  delay(15000);
 
   //Sound files initialized
   initMusic();

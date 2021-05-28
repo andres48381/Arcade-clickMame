@@ -46,7 +46,7 @@ void ctrlGames(char g)
         {
           launchMAME();
           MAME_active=true;
-          delay(6000);
+          delay(10000);
         }
         
         launchPang();
@@ -87,7 +87,7 @@ void ctrlGames(char g)
         {
           launchMAME();
           MAME_active=true;
-          delay(9000);
+          delay(12000);
         } 
         
         launchMarvel();
