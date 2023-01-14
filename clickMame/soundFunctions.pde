@@ -1,15 +1,17 @@
+/**
+  * @brief Regulador de volumen
+  * @param command indicador de subida/bajada
+  * @return resultado de la regulacion
+  */
 boolean adjust_sound(char command)
 {
   if(command=='i')
   {
     sound_level+=10;
-   // launch("D:/Desarrollos/SoundVolumeView.exe /Unmute Altavoces ");  
-    //println("increase sound");
   }
   else if(command=='o')
   {
     sound_level-=10;
-    //println("decrease sound");
   }
   else
   {
@@ -22,9 +24,7 @@ boolean adjust_sound(char command)
   println("sound_level: "+sound_level);
   
   if(myPort!=null)
-  {   
-    //message="S/"+str(sound_level);
-    
+  {     
     myPort.write('S'); 
     myPort.write(sound_level); 
   }  
@@ -33,6 +33,11 @@ boolean adjust_sound(char command)
   
   return true;
 }
+/**
+  * @brief
+  * @param 
+  * @return 
+  */
 void initMusic()
 {
   fileA = new SoundFile(this, sounds_path+"A.wav");
@@ -43,10 +48,20 @@ void initMusic()
   
   launch(volume_path+" /SetVolume Altavoces "+str(sound_level));  
 }
+/**
+  * @brief
+  * @param 
+  * @return 
+  */
 void playStart()
 {
   fileStart.play();
 }
+/**
+  * @brief
+  * @param 
+  * @return 
+  */
 void playAmbientMusic()
 {
   
@@ -64,8 +79,7 @@ void playAmbientMusic()
         case 2: s=fileI; break;
         default:  s=fileA; break;  
       }    
-      
-      //s.play();
+
       playing_ambient=true;
       println("***PLAYING MUSIC AMBIENT***");
     }
@@ -81,6 +95,11 @@ void playAmbientMusic()
     stopAmbientMusic();
   }
 }
+/**
+  * @brief
+  * @param 
+  * @return 
+  */
 void stopAmbientMusic()
 {
   s.stop();

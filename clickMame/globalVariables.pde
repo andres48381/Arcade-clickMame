@@ -4,7 +4,6 @@ import processing.serial.*;
 import java.awt.*;
 import java.awt.event.*;
 import static java.awt.event.KeyEvent.*;
-  
 import processing.sound.*;
 
 String version= "0.4.1";

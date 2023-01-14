@@ -1,8 +1,12 @@
 
+/**
+  * @brief
+  * @param 
+  * @return 
+  */
 void ctrlGames(char g)
 {  
-  
-   playStart();
+  playStart();
       
   //Send start buttons
   if(myPort!=null)
@@ -35,7 +39,6 @@ void ctrlGames(char g)
       delay(3000);
   }  
 
-  
   switch(g) 
   {
     //PANG
@@ -133,15 +136,15 @@ void ctrlGames(char g)
     println(message);
   }
 }
-
-//Lanza rom PANG
+/**
+  * @brief Lanza rom PANG
+  * @param 
+  * @return 
+  */
 void launchPang() 
 {
   stopAmbientMusic();
-  //pang 714,218
-//pang max 1073,391
-//ghost 874,305
-  
+
   //Lanzar PANG
   robot.mouseMove(pang_rom[0], pang_rom[1]);
   mouseClick(true);
@@ -156,11 +159,16 @@ void launchPang()
   robot.mouseMove(0,0);  
   robot.waitForIdle();
 }
-//Lanza Rayman
+/**
+  * @brief Lanza Rayman
+  * @param 
+  * @return 
+  */
 void launchRayman() 
 {
   stopAmbientMusic();
-  //Lanzar BUBBLE
+
+  //Lanzar Rayman
   robot.mouseMove(rayman_launch[0],rayman_launch[1]);
   mouseClick(true);
   
@@ -174,7 +182,11 @@ void launchRayman()
   robot.mouseMove(0,0);  
   robot.waitForIdle();  
 }
-//Lanza rom Marvel
+/**
+  * @brief Lanza rom Marvel
+  * @param 
+  * @return 
+  */
 void launchMarvel() 
 {
   stopAmbientMusic();
@@ -191,7 +203,11 @@ void launchMarvel()
   //Ocultar
   robot.mouseMove(0,0);   
 }
-//Lanza rom Mario
+/**
+  * @brief Lanza Mario
+  * @param 
+  * @return 
+  */
 void launchMario() 
 {
   stopAmbientMusic();
@@ -204,7 +220,11 @@ void launchMario()
   mouseClick(false);
   robot.waitForIdle();
 }
-//Lanza aplicacion MAME
+/**
+  * @brief Lanza aplicacion MAME
+  * @param 
+  * @return 
+  */
 void launchMAME()
 {
   robot.mouseMove(mame_launch[0],mame_launch[1]);
@@ -216,7 +236,11 @@ void launchMAME()
   robot.keyRelease(VK_ENTER);
   robot.waitForIdle();
 }
-
+/**
+  * @brief cierra aplicacion MAME
+  * @param 
+  * @return 
+  */
 void closeMAME()
 {
   robot.mouseMove(close_mame[0], close_mame[1]);
@@ -224,8 +248,11 @@ void closeMAME()
   robot.waitForIdle();
   delay(3000);
 }
-
-//Doble pulsacion con boton izq
+/**
+  * @brief pulsacion con boton izq raton
+  * @param 
+  * @return 
+  */
 void mouseClick(boolean doble)
 {
   robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
@@ -236,17 +263,28 @@ void mouseClick(boolean doble)
     robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
   }
 }
-
-//Close max windows
+/**
+  * @brief Close rayman window
+  * @param 
+  * @return 
+  */
 void closeRayman()
 {
   robot.mouseMove(1900, 0);
   robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
   robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+
+  //Close METAL SLUG
+  //robot.mousePress(VK_ESCAPE);
+  //robot.mouseRelease(VK_ESCAPE);
+
   robot.waitForIdle();
 }
-
-//Close max windows
+/**
+  * @brief Close MAME window
+  * @param 
+  * @return 
+  */
 void closeMameGame()
 {
   robot.mouseMove(1900, 0);
@@ -254,8 +292,11 @@ void closeMameGame()
   robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
   robot.waitForIdle();
 }
-
-//Close Mario emulator with .bat
+/**
+  * @brief Close Mario window
+  * @param 
+  * @return 
+  */
 void closeMario()
 {
   robot.mouseMove(1000, 300);

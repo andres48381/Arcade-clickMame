@@ -1,3 +1,7 @@
+/**
+  * @brief 
+  * @return 
+  */
 boolean readConfFile()
 {
   
@@ -75,5 +79,4 @@ boolean readConfFile()
     }  
     
   return false;
-  
 }
